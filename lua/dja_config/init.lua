@@ -33,10 +33,38 @@ vim.api.nvim_create_user_command('StartTs',
 		lfsServerFileName =  "/usr/bin/typescript-language-server"
 		vim.lsp.start({
 			name = "jscript",
-			cmd = { lfsServerFileName  },
+			cmd = { lfsServerFileName , "--stdio" },
 			root_dir = vim.fn.getcwd() 
 		})
 	end
 	,
 	{}
-	)
+)
+
+vim.api.nvim_create_user_command('StartLua',
+	function()
+		vim.lsp.start({
+			name= "lualang",
+			cmd = { "/usr/bin/lua-language-server" }
+		})
+	end
+	,
+	{}
+)
+
+vim.api.nvim_create_user_command("Srn",
+	function()
+		vim.lsp.buf.rename()	
+	end
+	,
+	{}
+)
+
+vim.api.nvim_create_user_command("Gd",
+	function()
+		vim.lsp.buf.type_definition()
+	end
+	,
+	{}
+)
+
