@@ -1,3 +1,4 @@
+
 function StartRust(projectFolder)
 	homeFolder = (vim.fn.environ())['HOME']
         lfsServerFileName = homeFolder .. "/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"
@@ -68,3 +69,10 @@ vim.api.nvim_create_user_command("Gd",
 	{}
 )
 
+vim.api.nvim_create_user_command("LsMyCmd",
+	function()
+		print("Srn: Symbol rename, doing renaming fo the symbol that is currently at the cursor\nGd: Going to definition go to the definition of the current symbol.")
+	end
+	,
+	{}
+)
